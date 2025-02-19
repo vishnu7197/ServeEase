@@ -1,0 +1,64 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .modal-container.success {
+    border-top: 5px solid #007bff; /* Blue for success */
+  }
+  
+  .modal-container.error {
+    border-top: 5px solid #dc3545; /* Red for error */
+  }
+  
+  .icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+  }
+  
+  .icon-tick {
+    color: #007bff; /* Blue tick */
+  }
+  
+  .icon-cross {
+    color: #dc3545; /* Red cross */
+  }
+  
+  .modal-container h2 {
+    margin: 0 0 10px;
+  }
+  
+  .modal-container p {
+    margin: 0 0 20px;
+  }
+  
+  .modal-container button {
+    padding: 10px 20px;
+    border: none;
+    background: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .modal-container button:hover {
+    background: #0056b3;
+  }
+      

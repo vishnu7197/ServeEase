@@ -1,0 +1,16 @@
+<div class="modal-overlay" *ngIf="isVisible">
+    <div class="modal-container" [ngClass]="{'success': type === 'success', 'error': type === 'error'}">
+      <div class="icon">
+        <ng-container *ngIf="type === 'success'">
+          <span class="icon-tick">✔</span>
+        </ng-container>
+        <ng-container *ngIf="type === 'error'">
+          <span class="icon-cross">✖</span>
+        </ng-container>
+      </div>
+      <h2>{{ type === 'success' ? 'Success' : 'Error' }}</h2>
+      <p>{{ message }}</p>
+      <button (click)="closeModal()">Close</button>
+    </div>
+  </div>
+  
