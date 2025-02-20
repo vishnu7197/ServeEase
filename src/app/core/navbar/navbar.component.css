@@ -1,8 +1,53 @@
+/* Glassmorphic Navbar - Override Bootstrap default */
 .navbar {
-    padding: 10px;
-  }
+  background: rgba(255, 255, 255, 0.1) !important; /* Transparent effect */
+  backdrop-filter: blur(10px); /* Glass effect */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  border-radius: 0px;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important; /* Slight shadow */
+}
+
+/* Override Bootstrap's default link and navbar brand colors */
+.navbar .navbar-brand, .navbar .nav-link {
+  color: white !important;
+}
+
+.fsize-brand{
+  font-size: 32px;
+}
+
+/* Hover color */
+.navbar .nav-link:hover {
+  color: #ddd !important;
+  cursor: pointer;
+}
+
+/* Glassmorphic Buttons */
+.btn-glass {
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 2px 31px;
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 17px;
+}
+
+
+/* Button Hover Effect */
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-logo {
+  height: 40px; /* Adjust as needed */
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
   
-  .navbar-brand {
-    font-weight: bold;
-  }
-  
+  /* Apply filter to remove white background (works for some images) */
+  mix-blend-mode: multiply; /* Works well if the navbar has a dark background */
+}

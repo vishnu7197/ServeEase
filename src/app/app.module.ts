@@ -16,6 +16,7 @@ import { TemplateTestComponent } from './template-test/template-test.component';
 import { NavbarComponent } from './core/navbar/navbar.component';
 import { LandingComponent } from './landing/landing.component';
 import { FooterComponent } from './core/footer/footer.component';
+import { AboutComponent } from './about/about.component';
 
 
 
@@ -29,7 +30,8 @@ import { FooterComponent } from './core/footer/footer.component';
     TemplateTestComponent,
     NavbarComponent,
     LandingComponent,
-    FooterComponent
+    FooterComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

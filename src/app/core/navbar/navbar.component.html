@@ -1,35 +1,38 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
     <div class="container-fluid">
-      <a class="navbar-brand" routerLink="/">ServEase</a>
-      
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-  
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/about">Manage your Rides</a>
-          </li>
-        </ul>
-  
-        <!-- Auth0 Login/Logout Buttons -->
-        <div class="d-flex">
-          <button *ngIf="!(auth.isAuthenticated$ | async)" class="btn btn-primary me-2" (click)="login()">
-            Login
-          </button>
-          <button *ngIf="auth.isAuthenticated$ | async" class="btn btn-danger" (click)="logout()">
-            Logout
-          </button>
+        <a class="navbar-brand fsize-brand" routerLink="/">
+            <img src="/assets/img/mechanic.png" alt="ServEase Logo" class="navbar-logo">
+            <span class="mt-1 ml-1"><strong>ServeEase</strong></span>
+            
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/about">About</a>
+                </li>
+                <li *ngIf="auth.isAuthenticated$ | async" class="nav-item">
+                    <a class="nav-link" routerLink="/about">Manage your Rides</a>
+                </li>
+            </ul>
+
+            <!-- Glassmorphic Login/Logout Buttons -->
+            <div class="d-flex">
+                <button *ngIf="!(auth.isAuthenticated$ | async)" class="btn btn-glass me-2" (click)="login()">
+                    Login
+                </button>
+                <button *ngIf="auth.isAuthenticated$ | async" class="btn btn-glass" (click)="logout()">
+                    Logout
+                </button>
+            </div>
         </div>
-      </div>
     </div>
-  </nav>
-  
+</nav>
