@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <div class="card shadow-lg p-4 rounded-3">
+        <h2 class="text-center mb-4">Vehicle Details</h2>
+        <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="company" class="form-label">Vehicle Company</label>
+                    <input type="text" id="company" class="form-control" formControlName="company" placeholder="Enter vehicle company">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="model" class="form-label">Model Name</label>
+                    <input type="text" id="model" class="form-control" formControlName="model" placeholder="Enter model name">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="regNo" class="form-label">Registration No</label>
+                    <input type="text" id="regNo" class="form-control" formControlName="registrationNo" placeholder="Enter registration number">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="owner" class="form-label">Owner Name</label>
+                    <input type="text" id="owner" class="form-control" formControlName="ownerName" placeholder="Enter owner name">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="contact" class="form-label">Contact No</label>
+                    <input type="text" id="contact" class="form-control" formControlName="contactNo" placeholder="Enter contact number">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="year" class="form-label">Manufactured Year</label>
+                    <input type="number" id="year" class="form-control" formControlName="manufacturedYear" placeholder="Enter manufactured year">
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary px-4">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

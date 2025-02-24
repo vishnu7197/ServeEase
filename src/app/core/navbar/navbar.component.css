@@ -17,6 +17,10 @@
   font-size: 32px;
 }
 
+.fsize-links{
+  font-size: 20px;
+}
+
 /* Hover color */
 .navbar .nav-link:hover {
   color: #ddd !important;

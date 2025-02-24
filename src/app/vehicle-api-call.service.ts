@@ -20,4 +20,15 @@ export class VehicleApiCallService {
     }
 
   }
+
+  postRegisterVehicle(payload:any){
+    if(this.integrationFlag){
+      return this._http.post(this.url,payload);
+    }
+    else
+    {
+      return this._http.get('assets/test json/register.json');
+    }
+
+  }
 }

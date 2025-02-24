@@ -1,0 +1,22 @@
+.glass-modal {
+    background: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Glass effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    color: white; /* Text color to contrast with background */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .glass-modal .modal-header,
+  .glass-modal .modal-footer {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+  }
+  
+  .glass-modal .modal-content {
+    background: transparent; /* Ensures modal background doesn't override glass effect */
+  }
+  

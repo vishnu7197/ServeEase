@@ -1,0 +1,51 @@
+<div class="container mt-4">
+    <h2 class="text-center">Manage Your Rides</h2>
+    
+    <!-- Button to Open Modal -->
+    <button class="btn btn-primary mb-3" (click)="fnShowAddVehicle()">
+        Add Vehicle
+    </button>
+
+    <!-- Vehicle List -->
+    <div *ngFor="let vehicle of vehicles" class="card mb-2">
+        <div class="card-body">
+            <h5 class="card-title">{{ vehicle.company }} - {{ vehicle.model }}</h5>
+            <p class="card-text">Reg No: {{ vehicle.registrationNo }}</p>
+            <p class="card-text">Owner: {{ vehicle.ownerName }}</p>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+
+<div *ngIf="showAddVehicle" [ngStyle]="{ 'display': displayStyle }" class="modal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content glass-modal">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLabel">Add Vehicle</h5>
+          <button type="button" class="btn-close" (click)="fnCloseAddVehicle()"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="vehicleForm">
+            <div class="mb-3">
+              <label for="company" class="form-label">Vehicle Company</label>
+              <input type="text" id="company" class="form-control" formControlName="company">
+            </div>
+            <div class="mb-3">
+              <label for="model" class="form-label">Model Name</label>
+              <input type="text" id="model" class="form-control" formControlName="model">
+            </div>
+            <div class="mb-3">
+              <label for="registrationNo" class="form-label">Registration No</label>
+              <input type="text" id="registrationNo" class="form-control" formControlName="registrationNo">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="onSubmit()">Save Vehicle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

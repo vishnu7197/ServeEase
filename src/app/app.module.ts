@@ -17,6 +17,8 @@ import { NavbarComponent } from './core/navbar/navbar.component';
 import { LandingComponent } from './landing/landing.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { AboutComponent } from './about/about.component';
+import { RegisterVehicleComponent } from './register-vehicle/register-vehicle.component';
+import { ManageRidesComponent } from './manage-rides/manage-rides.component';
 
 
 
@@ -31,7 +33,9 @@ import { AboutComponent } from './about/about.component';
     NavbarComponent,
     LandingComponent,
     FooterComponent,
-    AboutComponent
+    AboutComponent,
+    RegisterVehicleComponent,
+    ManageRidesComponent
   ],
   imports: [
     BrowserModule,
