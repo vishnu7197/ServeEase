@@ -1,0 +1,118 @@
+/* Glassmorphic container */
+.service-status-container {
+    position: relative;
+    padding: 20px;
+    width: 100%;
+    max-width: 75%;
+    margin: auto;
+    /* background: rgba(255, 255, 255, 0.2); */
+    border-radius: 15px;
+    z-index: 1 !important;
+    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); */
+    /* backdrop-filter: blur(12px); */
+    /* border: 1px solid rgba(255, 255, 255, 0.3); */
+  }
+  
+  /* Top-right navigation link */
+  .top-right-link {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 5px 10px;
+    border-radius: 10px;
+    transition: 0.3s;
+  }
+  
+  .top-right-link:hover {
+    background: rgba(0, 0, 0, 0.6);
+  }
+  
+  /* Scrollable service list */
+  .service-list {
+    max-height: 741px;
+    overflow-y: auto;
+    padding-right: 10px;
+  }
+  
+  /* Glassmorphic scrollbar */
+  .service-list::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .service-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+  }
+  
+  .service-card {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    position: relative;
+  }
+  
+  /* Header */
+  .service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Status Badge */
+  .status-badge {
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  /* Different Status Colors */
+  .status-pending {
+    background-color: rgba(255, 165, 0, 0.5); /* Orange */
+    color: #fff;
+  }
+  
+  .status-inprogress {
+    background-color: rgba(30, 144, 255, 0.5); /* Blue */
+    color: #fff;
+  }
+  
+  .status-delayed {
+    background-color: rgba(220, 20, 60, 0.5); /* Red */
+    color: #fff;
+  }
+  
+  .status-completed {
+    background-color: rgba(34, 139, 34, 0.5); /* Green */
+    color: #fff;
+  }
+  
+  /* Details */
+  .service-details p {
+    margin: 8px 0;
+  }
+  
+  /* No service message */
+.no-service-message {
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin-top: 20px;
+  }
+  

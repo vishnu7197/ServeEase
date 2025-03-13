@@ -37,6 +37,7 @@
   padding: 2px 31px;
   transition: all 0.3s ease-in-out;
   margin-bottom: 17px;
+  margin-right: 10px;
 }
 
 
@@ -54,4 +55,91 @@
   
   /* Apply filter to remove white background (works for some images) */
   mix-blend-mode: multiply; /* Works well if the navbar has a dark background */
+}
+
+/* Notification Bell */
+.notification-container {
+  position: relative;
+  margin-right: 20px;
+}
+
+.notification-icon {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  color: white;
+  font-size: 20px;
+}
+
+/* Blue dot for unread notifications */
+.notification-dot {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 6px;
+  height: 6px;
+  background: blue;
+  border-radius: 50%;
+}
+
+/* Notification Dropdown */
+.notification-dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 250px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  color: white;
+  z-index: 999 !important;
+  font-size: 10px;
+}
+
+/* Notification List */
+.notification-list {
+  max-height: 200px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+/* Notification Item */
+.notification-item {
+  padding: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.no-notifications {
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.nav-link{
+ font-size: 20px; 
+}
+
+.glass-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  z-index: 999;
+  width: 30rem;
+  color: white;
 }

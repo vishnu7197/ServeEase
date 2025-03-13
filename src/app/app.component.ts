@@ -12,20 +12,11 @@ export class AppComponent implements OnInit {
   title = 'vehicle-servicing-app';
   originUrl=window.location.origin;
   constructor(public auth: AuthService,private router:Router) {
-    this.auth.handleRedirectCallback().subscribe({
-      next: () => {
-        console.log('Redirect handled successfully.');
-      },
-      error: (err) => {
-        console.error('Error during redirect handling:', err);
-      }
-    });
+    
   }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
+  ngOnInit() {
+    
   }
 
-  ngOninit(){
-    this.auth.loginWithRedirect();
-  }
+ 
 }

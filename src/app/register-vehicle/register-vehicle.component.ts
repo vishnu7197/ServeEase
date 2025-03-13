@@ -35,7 +35,16 @@ export class RegisterVehicleComponent {
   successFlg=false;
   onSubmit(): void {
     if (this.vehicleForm.valid) {
-      console.log('Form Submitted', this.vehicleForm.value);
+      const formValue = this.vehicleForm.value; // Get form values
+
+    // Create new vehicle object in required JSON format
+    const newVehicle = {
+      type: formValue.company,  // Mapping company to type
+      registration: formValue.registrationNo,
+      owner_name: formValue.ownerName,
+      manufact_year: formValue.manufacturedYear
+    };
+      console.log('Form Submitted', newVehicle);
       this._registerVehicleService.postRegisterVehicle(this.vehicleForm.value).subscribe(
         (result:any)=>{
           this.isLoading=true;

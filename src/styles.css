@@ -11,6 +11,13 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+html {
+height: 100%;
+margin: 0;
+display: flex;
+flex-direction: column;
+}
+
 /* Overlay Effect for All Pages */
 .app-overlay {
     width: 100%;
@@ -27,12 +34,58 @@ body {
     z-index: 1; /* Ensures text is visible over the overlay */
     color: white;
     font-size: 24px;
-    height: 100vh;
+    height: 91vh;
+    flex: 1;  /* Expands to take up all available space */
+    display: flex;
+    flex-direction: column;
 }
 
-  button {
+  .buttn {
     margin-top: 20px;
     font-size: 18px;
   }
 
-  
+  /* Global Glassmorphic Scrollbar */
+::-webkit-scrollbar {
+  width: 8px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 10px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3) !important;
+  border-radius: 10px !important;
+  backdrop-filter: blur(5px) !important;
+  transition: background 0.3s ease-in-out !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Apply translucent gray effect to input fields */
+.form-control {
+  background: rgba(128, 128, 128, 0.2) !important; /* Light gray translucent background */
+  color: white !important; /* Ensure text is visible */
+  border: 1px solid rgba(255, 255, 255, 0.3) !important; /* Subtle border */
+  backdrop-filter: blur(10px) !important; /* Frosted glass effect */
+  border-radius: 8px !important; /* Rounded edges */
+  padding: 10px !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+/* Ensure placeholder color is visible */
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Change border color and background on focus */
+.form-control:focus {
+  background: rgba(128, 128, 128, 0.3) !important; /* Darker on focus */
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  outline: none !important;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important;
+}

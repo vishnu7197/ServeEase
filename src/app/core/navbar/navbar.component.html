@@ -1,3 +1,10 @@
+
+<div class="glass-popup" *ngIf="showLoginPopup">
+    <h3>Select Login Type</h3>
+    <button class="btn-glass mr-4" (click)="login('user')">Login as User</button>
+    <button class="btn-glass" (click)="login('service-center')">Login as Service Center</button>
+</div>
+  
 <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
     <div class="container-fluid">
         <a class="navbar-brand fsize-brand" routerLink="/">
@@ -19,17 +26,46 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/about">About</a>
                 </li>
-                <li *ngIf="auth.isAuthenticated$ | async" class="nav-item">
+                <li *ngIf="auth.isAuthenticated$ && userRole=='user'" class="nav-item">
                     <a class="nav-link" routerLink="/add-ride">Manage your Rides</a>
                 </li>
+                <li *ngIf="auth.isAuthenticated$ && userRole=='user'" class="nav-item">
+                    <a class="nav-link" routerLink="/status">Manage Service</a>
+                </li>
+                <li *ngIf="auth.isAuthenticated$ && userRole=='service-center'" class="nav-item">
+                    <a class="nav-link" routerLink="/reg-center">Add Center</a>
+                </li>
+                <li *ngIf="auth.isAuthenticated$ && userRole=='service-center'" class="nav-item">
+                    <a class="nav-link" routerLink="/incoming">Service Requests</a>
+                </li>
+
             </ul>
+            <div *ngIf="auth.isAuthenticated$ | async" class="notification-container">
+
+                <button class="notification-icon" (click)="toggleNotifications()">
+                    <i class="bi bi-bell"></i>
+                    <span *ngIf="unreadCount > 0" class="notification-dot"></span>
+                </button>
+                <div *ngIf="showNotifications" class="notification-dropdown">
+                    <h6>Notifications</h6>
+                    <div *ngIf="notifications.length === 0" class="no-notifications">
+                        No new notifications
+                    </div>
+                    <div class="notification-list">
+                        <div *ngFor="let notification of notifications" class="notification-item">
+                            <p>{{ notification.message }}</p>
+                            <small>{{ getTimeAgo(notification.time) }}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- Glassmorphic Login/Logout Buttons -->
             <div class="d-flex">
-                <button *ngIf="!(auth.isAuthenticated$ | async)" class="btn btn-glass me-2" (click)="login()">
+                <button *ngIf="!(auth.isAuthenticated$ | async)" class="btn btn-glass me-2 buttn" (click)="openLoginPopup()">
                     Login
                 </button>
-                <button *ngIf="auth.isAuthenticated$ | async" class="btn btn-glass" (click)="logout()">
+                <button *ngIf="auth.isAuthenticated$ | async" class="btn btn-glass buttn" (click)="logout()">
                     Logout
                 </button>
             </div>

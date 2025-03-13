@@ -1,0 +1,32 @@
+<app-loading-modal [isVisible]="isLoading"></app-loading-modal>
+<app-message-display-modal [isVisible]="isModalVisible" [type]="modalType" [message]="modalMessage"
+  (onClose)="handleModalClose()"></app-message-display-modal>
+
+<div class="service-status-container mt-5">
+
+    <!-- Top-right link to navigate to another component -->
+    <a routerLink="/book-service" class="top-right-link">Book Service</a>
+
+    <div *ngIf="services.length === 0" class="no-service-message mt-5">
+        <p>No service requests found, Book one to continue</p>
+    </div>
+    <div class="service-list mt-5"  *ngIf="services.length > 0">
+        <div *ngFor="let service of services" class="service-card glassmorphic">
+            <div class="service-header">
+                <h3>Service ID: {{ service.serviceId }}</h3>
+                <span class="status-badge" [ngClass]="getStatusClass(service.status)">
+                    {{ service.status | titlecase }}
+                </span>
+            </div>
+
+            <div class="service-details">
+                <p><strong>Customer:</strong> {{ service.customerName }}</p>
+                <p><strong>Problem:</strong> {{ service.problemDescription }}</p>
+                <p><strong>Pickup Point:</strong> {{ service.pickupPoint }}</p>
+                <p><strong>Center:</strong> {{ service.center }}</p>
+                <p><strong>Vehicle :</strong> {{ service.vehicle }}</p>
+                <!-- <p><strong>User Email:</strong> {{ service.userMail }}</p> -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<app-loading-modal [isVisible]="isLoading"></app-loading-modal>
+<app-message-display-modal [isVisible]="isModalVisible" [type]="modalType" [message]="modalMessage"
+  (onClose)="handleModalClose()"></app-message-display-modal>
+<div class="glass-card">
+  <div class="card-actions">
+      <!-- Edit Button -->
+      <button class="edit-btn" (click)="editVehicle(vehicle)">
+          ✎
+      </button>
+      <!-- Delete Button -->
+      <button class="delete-btn" (click)="openDeleteModal(vehicle)">
+          🗑️
+      </button>
+  </div>
+  
+  <div class="vehicle-icon">
+    <img [src]="vehicleImage" alt="Vehicle Type">
+  </div>
+
+  <div class="vehicle-details">
+    <h3>{{ vehicle.model }}</h3>
+    <p><strong>Type:</strong> {{ vehicle.type }}</p>
+    <p><strong>Registration:</strong> {{ vehicle.registration }}</p>
+    <p><strong>Owner:</strong> {{ vehicle.owner_name }}</p>
+    <p><strong>Manufactured Year:</strong> {{ vehicle.manufact_year }}</p>
+  </div>
+</div>
+
+<!-- Glassmorphic Delete Confirmation Modal -->
+<div class="modal-overlay" *ngIf="showDeleteModal">
+  <div class="modal-container glass-modal">
+      <h2>Confirm Deletion</h2>
+      <p>Are you sure you want to delete this ride?</p>
+      <div class="modal-actions">
+          <button class="btn cancel-btn" (click)="closeDeleteModal()">Cancel</button>
+          <button class="btn delete-confirm-btn" (click)="deleteVehicle()">Delete</button>
+      </div>
+  </div>
+</div>

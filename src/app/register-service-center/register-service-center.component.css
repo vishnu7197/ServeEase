@@ -1,0 +1,59 @@
+.glass-container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    text-align: left;
+    color: white;
+    font-size: 15px;
+  }
+  
+  .glass-container h2 {
+    margin-bottom: 20px;
+  }
+  
+  /* .form-label {
+    font-weight: bold;
+  }
+   */
+  .form-control, .form-select {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+  }
+
+  .form-select option {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+  }
+  
+  .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .glass-dropdown {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+  }
+  
+  .btn-primary {
+    background: rgba(0, 123, 255, 0.8);
+    border: none;
+  }
+  
+  .btn-primary:disabled {
+    background: rgba(0, 123, 255, 0.5);
+    cursor: not-allowed;
+  }
+  
+  .error-text {
+    color: #ff4d4d;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  

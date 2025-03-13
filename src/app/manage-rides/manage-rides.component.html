@@ -1,51 +1,115 @@
+
+<app-loading-modal [isVisible]="isLoading"></app-loading-modal>
+<app-message-display-modal [isVisible]="isModalVisible" [type]="modalType" [message]="modalMessage"
+  (onClose)="handleModalClose()"></app-message-display-modal>
 <div class="container mt-4">
     <h2 class="text-center">Manage Your Rides</h2>
     
     <!-- Button to Open Modal -->
-    <button class="btn btn-primary mb-3" (click)="fnShowAddVehicle()">
+    <!-- <button class="btn btn-primary mb-3" (click)="fnShowAddVehicle()">
         Add Vehicle
-    </button>
+    </button> -->
 
     <!-- Vehicle List -->
-    <div *ngFor="let vehicle of vehicles" class="card mb-2">
+    <!-- <div *ngFor="let vehicle of vehicles" class="card mb-2">
         <div class="card-body">
             <h5 class="card-title">{{ vehicle.company }} - {{ vehicle.model }}</h5>
             <p class="card-text">Reg No: {{ vehicle.registrationNo }}</p>
             <p class="card-text">Owner: {{ vehicle.ownerName }}</p>
         </div>
+    </div> -->
+    <div class="vehicle-container mt-5">
+      <!-- Add Vehicle Card -->
+      <div class="glass-card add-vehicle-card" (click)="fnShowAddVehicle()">
+        <div class="add-icon">+</div>
+      </div>
+      <!-- Existing Vehicle Cards -->
+      <app-vehicle-card *ngFor="let v of vehicles" [vehicle]="v" (onDelete)="getVehicleDetails()"></app-vehicle-card>
+    
+      
     </div>
 </div>
 
 <!-- Modal -->
 
 <div *ngIf="showAddVehicle" [ngStyle]="{ 'display': displayStyle }" class="modal">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content glass-modal">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalLabel">Add Vehicle</h5>
-          <button type="button" class="btn-close" (click)="fnCloseAddVehicle()"></button>
-        </div>
-        <div class="modal-body">
-          <form [formGroup]="vehicleForm">
-            <div class="mb-3">
-              <label for="company" class="form-label">Vehicle Company</label>
-              <input type="text" id="company" class="form-control" formControlName="company">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content glass-modal">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel">Add Vehicle</h5>
+        <button type="button" class="btn-close" (click)="fnCloseAddVehicle()"></button>
+      </div>
+      
+      <div class="modal-body">
+        <form [formGroup]="vehicleForm">
+          
+          <!-- Vehicle Type Dropdown (Glassmorphic Style) -->
+          <div class="mb-3">
+            <label for="type" class="form-label">Vehicle Type</label>
+            <select id="type" class="form-control glass-select" formControlName="type">
+              <option value="Car">Car</option>
+              <option value="Bike">Bike</option>
+            </select>
+          </div>
+
+          <!-- Vehicle Company -->
+          <div class="mb-3">
+            <label for="company" class="form-label">Vehicle Company</label>
+            <input type="text" id="company" class="form-control" formControlName="company">
+            <div class="text-danger" *ngIf="vehicleForm.get('company')?.invalid && vehicleForm.get('company')?.touched">
+              Company name is required.
             </div>
-            <div class="mb-3">
-              <label for="model" class="form-label">Model Name</label>
-              <input type="text" id="model" class="form-control" formControlName="model">
+          </div>
+
+          <!-- Model Name -->
+          <div class="mb-3">
+            <label for="model" class="form-label">Model Name</label>
+            <input type="text" id="model" class="form-control" formControlName="model">
+            <div class="text-danger" *ngIf="vehicleForm.get('model')?.invalid && vehicleForm.get('model')?.touched">
+              Model name is required.
             </div>
-            <div class="mb-3">
-              <label for="registrationNo" class="form-label">Registration No</label>
-              <input type="text" id="registrationNo" class="form-control" formControlName="registrationNo">
+          </div>
+
+          <!-- Registration Number -->
+          <div class="mb-3">
+            <label for="registrationNo" class="form-label">Registration No</label>
+            <input type="text" id="registrationNo" class="form-control" formControlName="registrationNo">
+            <div class="text-danger" *ngIf="vehicleForm.get('registrationNo')?.invalid && vehicleForm.get('registrationNo')?.touched">
+              Registration number is required.
             </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="onSubmit()">Save Vehicle</button>
-        </div>
+          </div>
+
+          <!-- Owner Name -->
+          <div class="mb-3">
+            <label for="ownerName" class="form-label">Owner Name</label>
+            <input type="text" id="ownerName" class="form-control" formControlName="ownerName">
+            <div class="text-danger" *ngIf="vehicleForm.get('ownerName')?.invalid && vehicleForm.get('ownerName')?.touched">
+              Owner name is required.
+            </div>
+          </div>
+
+          <!-- Manufactured Year (Pattern Validation for Only Numbers) -->
+          <div class="mb-3">
+            <label for="manufacturedYear" class="form-label">Manufactured Year</label>
+            <input type="text" id="manufacturedYear" class="form-control" formControlName="manufacturedYear">
+            <div class="text-danger" *ngIf="vehicleForm.get('manufacturedYear')?.invalid && vehicleForm.get('manufacturedYear')?.touched">
+              Enter a valid year between 1900 and {{ currentYear }} (only numbers).
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn" (click)="onSubmit()" [disabled]="vehicleForm.invalid">
+          Save Vehicle
+        </button>
       </div>
     </div>
   </div>
+</div>
+
+
+
   

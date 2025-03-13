@@ -1,0 +1,33 @@
+<app-loading-modal [isVisible]="isLoading"></app-loading-modal>
+<app-message-display-modal [isVisible]="isModalVisible" [type]="modalType" [message]="modalMessage"
+  (onClose)="handleModalClose()"></app-message-display-modal>
+
+<div class="glass-container">
+    <h2>Incoming Service Bookings</h2>
+  
+    <div *ngIf="serviceBookings.length > 0; else noBookings">
+      <div class="booking-card" *ngFor="let booking of serviceBookings">
+        <div class="booking-header">
+          <h3>Service ID: {{ booking.serviceId }}</h3>
+          <span class="status" [ngClass]="getStatusClass(booking.status)">{{ booking.status }}</span>
+        </div>
+  
+        <p><strong>Customer:</strong> {{ booking.customerName }}</p>
+        <p><strong>Pickup Point:</strong> {{ booking.pickupPoint }}</p>
+        <p><strong>Problem:</strong> {{ booking.problemDescription }}</p>
+  
+        <label for="status">Update Status:</label>
+        <select [(ngModel)]="booking.status" (change)="updateStatus(booking)">
+          <option value="pending">Pending</option>
+          <option value="in progress">In Progress</option>
+          <option value="delayed">Delayed</option>
+          <option value="completed">Completed</option>
+        </select>
+      </div>
+    </div>
+  
+    <ng-template #noBookings>
+      <p class="no-bookings">No incoming service bookings.</p>
+    </ng-template>
+  </div>
+  

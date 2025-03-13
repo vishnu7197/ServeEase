@@ -1,0 +1,61 @@
+<app-loading-modal [isVisible]="isLoading"></app-loading-modal>
+<app-message-display-modal [isVisible]="isModalVisible" [type]="modalType" [message]="modalMessage"
+  (onClose)="handleModalClose()"></app-message-display-modal>
+<div class="glass-container mt-5">
+  <h2>Register Service</h2>
+  <form [formGroup]="serviceForm" (ngSubmit)="onSubmit()">
+    
+    <!-- <div class="form-group textLeft">
+      <label>Vehicle Details</label>
+      <input type="text" formControlName="vehicleDetails" placeholder="Enter vehicle make & model" />
+      <small class="error-text" *ngIf="isFieldInvalid('vehicleDetails')">Vehicle details are required.</small>
+    </div> -->
+
+    <div class="mb-3 textLeft" *ngIf="vehicles.length > 0">
+      <label for="vehicleDetails" class="form-label">Vehicle Details</label>
+      <select formControlName="vehicleDetails" class="form-select">
+        <option selected value="">--Select--</option>
+        <option *ngFor="let vehicle of vehicles" [value]="vehicle.id">
+          {{ vehicle.company }}, {{ vehicle.model }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group textLeft">
+      <label>Problem Description</label>
+      <textarea formControlName="problemDescription" placeholder="Describe the issue"></textarea>
+      <small class="error-text" *ngIf="isFieldInvalid('problemDescription')">Problem description is required.</small>
+    </div>
+
+    <div class="form-group textLeft">
+      <label>Customer Name</label>
+      <input type="text" formControlName="customerName" placeholder="Enter full name" />
+      <small class="error-text" *ngIf="isFieldInvalid('customerName')">Customer name is required.</small>
+    </div>
+
+    <div class="form-group textLeft">
+      <label>Contact No</label>
+      <input type="text" formControlName="contactNo" placeholder="Enter No." />
+      <small class="error-text" *ngIf="isFieldInvalid('contactNo')">Enter a valid 10-digit contact number.</small>
+    </div>
+
+    <div class="form-group textLeft">
+      <label>Pickup Point</label>
+      <input [(ngModel)]="pincode" (input)="fnFilterPincode()" type="text" formControlName="pickupPoint" placeholder="Enter pickup location" />
+      <small class="error-text" *ngIf="isFieldInvalid('pickupPoint')">Enter a valid 6-digit pincode.</small>
+    </div>
+
+    <small class="error-text" *ngIf="filteredCenters.length == 0 && isPincodeInvalid()">Oops! no service center servicing your area</small>
+    <div class="mb-3" *ngIf="filteredCenters.length > 0">
+      <label for="serviceCenter" class="form-label">Select Service Center</label>
+      <select formControlName="serviceCenter" class="form-select" [(ngModel)]="selectedServiceCenter">
+        <option selected value="">--Select--</option>
+        <option *ngFor="let center of filteredCenters" [value]="center.id">
+          {{ center.centerName }}, {{ center.state }}, {{ center.city }}
+        </option>
+      </select>
+    </div>
+
+    <button type="submit" [disabled]="serviceForm.invalid">Book Service</button>
+  </form>
+</div>

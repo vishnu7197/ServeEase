@@ -4,29 +4,38 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.1); /* Light transparent overlay */
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
     display: flex;
-    align-items: center;
     justify-content: center;
-    z-index: 1000;
+    align-items: center;
+    z-index: 999999;
   }
   
-  .loading-modal {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
+ /* Glassmorphic modal */
+.loading-modal {
+  width: 250px;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+  backdrop-filter: blur(20px); /* Blurred glass effect */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  text-align: center;
+  color: white;
+  font-size: 15px;
+}
+
   .spinner {
     width: 40px;
     height: 40px;
     border: 5px solid #ccc;
-    border-top: 5px solid #007bff;
+    border-top: 5px solid gray;
     border-radius: 50%;
     animation: spin 1s linear infinite;
     margin: 0 auto 10px;
+  }
+  .font_Colr{
+    color: lightgrey;
   }
   
   @keyframes spin {
