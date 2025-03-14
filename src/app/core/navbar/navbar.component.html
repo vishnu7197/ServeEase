@@ -51,12 +51,12 @@
                     <div *ngIf="notifications.length === 0" class="no-notifications">
                         No new notifications
                     </div>
-                    <div class="notification-list">
-                        <div *ngFor="let notification of notifications" class="notification-item">
-                            <p>{{ notification.message }}</p>
-                            <small>{{ getTimeAgo(notification.time) }}</small>
+                        <div class="notification-list">
+                            <div *ngFor="let notification of getSortedNotifications()" class="notification-item">
+                                <p>{{ notification.message }}</p>
+                                <small>{{ getTimeAgo(notification.time) }}</small>
+                            </div>
                         </div>
-                    </div>
                 </div>
             </div>
 

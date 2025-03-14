@@ -131,7 +131,8 @@ export class BookServiceComponent implements OnInit {
           status:'pending',
           center:service_Center.centerName+','+service_Center.state+','+service_Center.city,
           vehicle:vehicle_dtls.company+','+vehicle_dtls.model,
-          userMail:service_Center.userMail
+          userMail:service_Center.userMail,
+          costEstimation:0
         
       };
       this._httpService.bookServices(bookServiceModel).subscribe(

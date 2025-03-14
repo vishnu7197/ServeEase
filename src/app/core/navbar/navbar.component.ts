@@ -81,6 +81,9 @@ export class NavbarComponent implements OnInit {
     }
   }
   
+  getSortedNotifications() {
+    return this.notifications.sort((a, b) => new Date(b.time).getTime() - new Date(a.time).getTime());
+  }
   // login() {
   //   this.auth.loginWithRedirect();
   //   this.router.navigate(['/home'])
@@ -94,6 +97,7 @@ export class NavbarComponent implements OnInit {
     this.showLoginPopup = false;
     this.authService.setUserRole(role);
     this.auth.loginWithRedirect();
+    this.getNotifications();
   }
 
   logout() {

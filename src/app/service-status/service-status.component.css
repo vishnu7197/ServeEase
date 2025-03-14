@@ -116,3 +116,16 @@
     margin-top: 20px;
   }
   
+
+  .download-icon {
+    margin-left: 10px;
+    cursor: pointer;
+    color: #b4b6b9;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .download-icon:hover {
+    color: #f4f6f8;
+  }
+  

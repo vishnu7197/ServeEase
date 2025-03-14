@@ -20,6 +20,7 @@ export class ManageRidesComponent implements OnInit{
   displayStyle='none';
   currentYear = new Date().getFullYear(); 
   user:UserModel | null =null;
+  btnText='Add';
 
   //API call loading and response boiler code
   isLoading: boolean = false;
@@ -71,7 +72,26 @@ export class ManageRidesComponent implements OnInit{
     );
   }
 
-  fnShowAddVehicle(){
+  editVehicle:any={};
+
+  showEdit(newVehicle:any){
+    this.editVehicle=newVehicle;
+    const vehicle = {
+      model: newVehicle.model,
+      type: newVehicle.type,  // Mapping type to company
+      registrationNo: newVehicle.registration,
+      ownerName: newVehicle.owner_name,
+      manufacturedYear: newVehicle.manufact_year,
+      company: newVehicle.company,
+      userId: newVehicle.userId
+    };
+    this.vehicleForm.patchValue(vehicle);
+    this.fnShowAddVehicle('Edit');
+
+  }
+
+  fnShowAddVehicle(text:string){
+    this.btnText=text;
     this.showAddVehicle=true;
     this.displayStyle='block';
   }
@@ -98,33 +118,65 @@ export class ManageRidesComponent implements OnInit{
       userId:this.user.email
     };
       console.log('Form Submitted', this.vehicleForm.value);
-      this._httpService.postRegisterVehicle(newVehicle).subscribe(
-        (result: any) => {
-          
-          console.log('inside post call', result);
-          if (result.status === 201) {
-
-            setTimeout(() => {
-              this.isLoading = false;  
-              this.isModalVisible=true;
-              this.modalType='success';
-              this.modalMessage='Ride Added';
-              // Add the vehicle to the list
-              this.vehicleForm.reset();
-
-              // Close the modal programmatically
-              // let closeButton = document.querySelector('#addVehicleModal .btn-close') as HTMLElement;
-              // closeButton.click();
-            }, 100);
+      if (this.btnText=='Edit') {
+        this._httpService.putRegisterVehicle(newVehicle,this.editVehicle.id).subscribe(
+          (result: any) => {
+            
+            console.log('inside put call', result);
+            if (result.status === 200) {
+  
+              setTimeout(() => {
+                this.isLoading = false;  
+                this.isModalVisible=true;
+                this.modalType='success';
+                this.modalMessage='Ride '+this.btnText+'ed';
+                // Add the vehicle to the list
+                this.vehicleForm.reset();
+  
+                // Close the modal programmatically
+                // let closeButton = document.querySelector('#addVehicleModal .btn-close') as HTMLElement;
+                // closeButton.click();
+              }, 100);
+            }
+          },
+          (err) => {
+            this.isLoading=false;
+            this.isModalVisible=true;
+            this.modalType='error';
+            this.modalMessage='Service is down';
           }
-        },
-        (err) => {
-          this.isLoading=false;
-          this.isModalVisible=true;
-          this.modalType='error';
-          this.modalMessage='Service is down';
-        }
-      );
+        );
+      }
+      else{
+        this._httpService.postRegisterVehicle(newVehicle).subscribe(
+          (result: any) => {
+            
+            console.log('inside post call', result);
+            if (result.status === 201) {
+  
+              setTimeout(() => {
+                this.isLoading = false;  
+                this.isModalVisible=true;
+                this.modalType='success';
+                this.modalMessage='Ride '+this.btnText+'ed';
+                // Add the vehicle to the list
+                this.vehicleForm.reset();
+  
+                // Close the modal programmatically
+                // let closeButton = document.querySelector('#addVehicleModal .btn-close') as HTMLElement;
+                // closeButton.click();
+              }, 100);
+            }
+          },
+          (err) => {
+            this.isLoading=false;
+            this.isModalVisible=true;
+            this.modalType='error';
+            this.modalMessage='Service is down';
+          }
+        );
+      }
+      
     }
   }
 }

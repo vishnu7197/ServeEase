@@ -107,6 +107,39 @@
   scrollbar-width: thin;
 }
 
+.notification-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar in Firefox */
+.notification-list {
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar in IE/Edge */
+.notification-list {
+  -ms-overflow-style: none;
+}
+
+/* Custom Scrollbar */
+/* .notification-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.notification-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.notification-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.notification-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+} */
 /* Notification Item */
 .notification-item {
   padding: 8px;

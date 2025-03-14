@@ -13,6 +13,9 @@ import { UserModel } from '../models/UserModel';
 export class ServiceBookingListComponent implements OnInit {
   serviceBookings:any[]=[];
   user:UserModel | null =null;
+  showCostPopup = false;
+  selectedBooking: any = null;
+  estimatedCost: number | null = null;
   
   //API call loading and response boiler code
   isLoading: boolean = false;
@@ -31,42 +34,76 @@ export class ServiceBookingListComponent implements OnInit {
   }
 
   updateStatus(booking: any) {
+    if (booking.status === 'completed') {
+      // Show cost input popup
+      this.selectedBooking = booking;
+      this.showCostPopup = true;}
+    else{
+      this.callUpdateStatusAPI(booking);
+    }
+    
+   
+  }
+
+  callUpdateStatusAPI(booking: any) {
     console.log('Updated Status:', booking);
-    // Call API to update the status here
-    const notificationModel={
-      message:'The Status of '+ booking.serviceId+' has moved to '+booking.status,
-      userId:booking.bookingId,
-      time: Date.now()
-    };
-    this._httpService.postNotifications(notificationModel).subscribe(
-      (result:any)=>{
-        if (result.status === 201) {
+      // Call API to update the status here
+      const notificationModel={
+        message:'The Status of '+ booking.serviceId+' has moved to '+booking.status,
+        userId:booking.bookingId,
+        time: Date.now()
+      };
+      this._httpService.postNotifications(notificationModel).subscribe(
+        (result:any)=>{
+          if (result.status === 201) {
+  
+              setTimeout(() => {
+                this.isLoading = false;  
+                this.isModalVisible=true;
+                this.modalType='success';
+                this.modalMessage='Status Changed';
+               
+              }, 100);
+            }
+        }
+      );
+      this.isLoading=true;
+      this._httpService.putStatus(booking.id,booking).subscribe(
+        (result:any)=>{
+          if (result.status === 201) {
+  
+              setTimeout(() => {
+                this.isLoading = false;  
+                this.isModalVisible=true;
+                this.modalType='success';
+                this.modalMessage='Status Changed';
+               
+              }, 100);
+            }
+        }
+      );
+  }
 
-            setTimeout(() => {
-              this.isLoading = false;  
-              this.isModalVisible=true;
-              this.modalType='success';
-              this.modalMessage='Status Changed';
-             
-            }, 100);
-          }
-      }
-    );
-    this.isLoading=true;
-    this._httpService.putStatus(booking.id,booking).subscribe(
-      (result:any)=>{
-        if (result.status === 201) {
+  submitCost() {
+    if (this.estimatedCost !== null) {
+      // Attach cost to the selected booking
+      this.selectedBooking.estimatedCost = this.estimatedCost;
 
-            setTimeout(() => {
-              this.isLoading = false;  
-              this.isModalVisible=true;
-              this.modalType='success';
-              this.modalMessage='Status Changed';
-             
-            }, 100);
-          }
-      }
-    );
+      // Call API after entering cost
+      this.callUpdateStatusAPI(this.selectedBooking);
+
+      // Reset values and close popup
+      this.showCostPopup = false;
+      this.estimatedCost = null;
+    } else {
+      this.isModalVisible=true;
+      this.modalType='error';
+      this.modalMessage='Please enter cost.';
+    }
+  }
+  cancelClick(){
+    this.showCostPopup = false;
+    this.getServiceDetails();
   }
 
   getStatusClass(status: string) {

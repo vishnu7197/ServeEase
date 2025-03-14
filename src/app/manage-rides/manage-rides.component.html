@@ -20,11 +20,11 @@
     </div> -->
     <div class="vehicle-container mt-5">
       <!-- Add Vehicle Card -->
-      <div class="glass-card add-vehicle-card" (click)="fnShowAddVehicle()">
+      <div class="glass-card add-vehicle-card" (click)="fnShowAddVehicle('Add')">
         <div class="add-icon">+</div>
       </div>
       <!-- Existing Vehicle Cards -->
-      <app-vehicle-card *ngFor="let v of vehicles" [vehicle]="v" (onDelete)="getVehicleDetails()"></app-vehicle-card>
+      <app-vehicle-card *ngFor="let v of vehicles" [vehicle]="v" (onEdit)="showEdit(v)" (onDelete)="getVehicleDetails()"></app-vehicle-card>
     
       
     </div>
@@ -102,8 +102,8 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn" (click)="onSubmit()" [disabled]="vehicleForm.invalid">
-          Save Vehicle
+        <button type="button" class="btn btn-dark" (click)="onSubmit()" [disabled]="vehicleForm.invalid">
+          {{btnText}} Vehicle
         </button>
       </div>
     </div>

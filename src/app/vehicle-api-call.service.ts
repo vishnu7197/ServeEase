@@ -124,6 +124,16 @@ export class VehicleApiCallService {
     }
 
   }
+  putRegisterVehicle(payload:any,id:any){
+    if(this.integrationFlag){
+      return this._http.put(this.url+'vehicle_list/'+id,payload, { observe: 'response' });
+    }
+    else
+    {
+      return this._http.get('assets/test json/register.json');
+    }
+
+  }
 
   getVehicleDetails(){
     if(this.integrationFlag){

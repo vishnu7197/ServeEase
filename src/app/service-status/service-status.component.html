@@ -16,6 +16,10 @@
                 <h3>Service ID: {{ service.serviceId }}</h3>
                 <span class="status-badge" [ngClass]="getStatusClass(service.status)">
                     {{ service.status | titlecase }}
+                    <i *ngIf="service.status === 'completed'" 
+                       class="bi bi-download download-icon" 
+                       (click)="downloadPDF(service)">
+                    </i>
                 </span>
             </div>
 
@@ -26,6 +30,8 @@
                 <p><strong>Center:</strong> {{ service.center }}</p>
                 <p><strong>Vehicle :</strong> {{ service.vehicle }}</p>
                 <!-- <p><strong>User Email:</strong> {{ service.userMail }}</p> -->
+                <p  *ngIf="service.status === 'completed'"><strong>Estimation :</strong> INR {{ service.estimatedCost }}</p>
+
             </div>
         </div>
     </div>
