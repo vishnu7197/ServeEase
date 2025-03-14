@@ -1,0 +1,2 @@
+[{ "type": "Car", "model": "Toyota Corolla", "registrationNo": "KL-05-AB-1234", "ownerName": "John Doe", "manufacturedYear": "2018" },
+  { "type": "Bike", "model": "Yamaha R15", "registrationNo": "KL-07-CD-5678", "ownerName": "Jane Smith", "manufacturedYear": "2020" }]
