@@ -3,67 +3,101 @@
   (onClose)="handleModalClose()"></app-message-display-modal>
 
 <div class="glass-container mt-5">
-    <h2 class="text-center">Register Service Center</h2>
-    <form [formGroup]="serviceCenterForm" (ngSubmit)="onSubmit()">
-      
-      <!-- Service Center Name -->
-      <div class="mb-3">
-        <label for="centerName" class="form-label">Service Center Name</label>
-        <input type="text" id="centerName" class="form-control" formControlName="centerName" placeholder="Enter Service Center Name">
-        <div *ngIf="serviceCenterForm.get('centerName')?.invalid && serviceCenterForm.get('centerName')?.touched" class="error-text">
-          Service Center Name is required.
-        </div>
-      </div>
-  
-      <!-- License Number -->
-      <div class="mb-3">
-        <label for="licenseNumber" class="form-label">Center License Number</label>
-        <input type="text" id="licenseNumber" class="form-control" formControlName="licenseNumber" placeholder="Enter License Number">
-        <div *ngIf="serviceCenterForm.get('licenseNumber')?.invalid && serviceCenterForm.get('licenseNumber')?.touched" class="error-text">
-          License Number is required.
-        </div>
-      </div>
-  
-      <!-- Serviced Vehicle Types -->
-      <div class="mb-3">
-        <label for="vehicleTypes" class="form-label">Vehicles Serviced</label>
-        <select id="vehicleTypes" class="form-select glass-dropdown" formControlName="vehicleTypes">
-          <option value="" disabled>Select Vehicle Type</option>
-          <option value="car">Car</option>
-          <option value="bike">Bike</option>
-        </select>
-        <div *ngIf="serviceCenterForm.get('vehicleTypes')?.invalid && serviceCenterForm.get('vehicleTypes')?.touched" class="error-text">
-          Please select a vehicle type.
-        </div>
-      </div>
-  
-      <!-- Pincodes -->
-      <div class="mb-3">
-        <label for="pincodes" class="form-label">Pickup Service Pincodes</label>
-        <input type="text" id="pincodes" class="form-control" formControlName="pincodes" placeholder="Enter Pincodes (comma separated)">
-        <div *ngIf="serviceCenterForm.get('pincodes')?.invalid && serviceCenterForm.get('pincodes')?.touched" class="error-text">
-          Please enter valid pincodes.
-        </div>
-      </div>
-      <div class="mb-3">
-        <label for="state" class="form-label">State</label>
-        <input type="text" id="state" class="form-control" formControlName="state" placeholder="Enter License Number">
-        <div *ngIf="serviceCenterForm.get('state')?.invalid && serviceCenterForm.get('state')?.touched" class="error-text">
-          State is required.
-        </div>
-      </div>
-      <div class="mb-3">
-        <label for="city" class="form-label">State</label>
-        <input type="text" id="city" class="form-control" formControlName="city" placeholder="Enter License Number">
-        <div *ngIf="serviceCenterForm.get('city')?.invalid && serviceCenterForm.get('city')?.touched" class="error-text">
-          License Number is required.
-        </div>
-      </div>
-  
-      <!-- Submit Button -->
-      <div class="text-center">
-        <button type="submit" class="btn btn-primary px-4" [disabled]="serviceCenterForm.invalid">Register</button>
-      </div>
-    </form>
+  <div class="d-flex justify-content-between align-items-center">
+    <h2 class="text-center flex-grow-1">Register Service Center</h2>
+    <div class="manage-icon mb-3" (click)="openManageCentersModal()" title="Manage Centers">
+      <i class="bi bi-gear-fill"></i>
+    </div>
   </div>
-  
+
+  <form [formGroup]="serviceCenterForm" (ngSubmit)="onSubmit()">
+    <!-- Service Center Name -->
+    <div class="mb-3">
+      <label for="centerName" class="form-label">Service Center Name</label>
+      <input type="text" id="centerName" class="form-control" formControlName="centerName" placeholder="Enter Service Center Name">
+      <div *ngIf="serviceCenterForm.get('centerName')?.invalid && serviceCenterForm.get('centerName')?.touched" class="error-text">
+        Service Center Name is required.
+      </div>
+    </div>
+
+    <!-- License Number -->
+    <div class="mb-3">
+      <label for="licenseNumber" class="form-label">Center License Number</label>
+      <input type="text" id="licenseNumber" class="form-control" formControlName="licenseNumber" placeholder="Enter License Number">
+      <div *ngIf="serviceCenterForm.get('licenseNumber')?.invalid && serviceCenterForm.get('licenseNumber')?.touched" class="error-text">
+        License Number is required.
+      </div>
+    </div>
+
+    <!-- Serviced Vehicle Types -->
+    <div class="mb-3">
+      <label for="vehicleTypes" class="form-label">Vehicles Serviced</label>
+      <select id="vehicleTypes" class="form-select glass-dropdown" formControlName="vehicleTypes">
+        <option value="" disabled>Select Vehicle Type</option>
+        <option value="car">Car</option>
+        <option value="bike">Bike</option>
+      </select>
+      <div *ngIf="serviceCenterForm.get('vehicleTypes')?.invalid && serviceCenterForm.get('vehicleTypes')?.touched" class="error-text">
+        Please select a vehicle type.
+      </div>
+    </div>
+
+    <!-- Pincodes -->
+    <div class="mb-3">
+      <label for="pincodes" class="form-label">Pickup Service Pincodes</label>
+      <input type="text" id="pincodes" class="form-control" formControlName="pincodes" placeholder="Enter Pincodes (comma separated)">
+      <div *ngIf="serviceCenterForm.get('pincodes')?.invalid && serviceCenterForm.get('pincodes')?.touched" class="error-text">
+        Please enter valid pincodes.
+      </div>
+    </div>
+
+    <!-- State & City -->
+    <div class="mb-3">
+      <label for="state" class="form-label">State</label>
+      <input type="text" id="state" class="form-control" formControlName="state" placeholder="Enter State">
+      <div *ngIf="serviceCenterForm.get('state')?.invalid && serviceCenterForm.get('state')?.touched" class="error-text">
+        State is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="city" class="form-label">City</label>
+      <input type="text" id="city" class="form-control" formControlName="city" placeholder="Enter City">
+      <div *ngIf="serviceCenterForm.get('city')?.invalid && serviceCenterForm.get('city')?.touched" class="error-text">
+        City is required.
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary px-4" [disabled]="serviceCenterForm.invalid">{{textSubmit}}</button>
+    </div>
+    <div class="text-center mt-1">
+      <button type="cancel" (click)="cancelClickFn()" class="btn btn-primary px-4" >Cancel</button>
+    </div>
+  </form>
+</div>
+
+<!-- Manage Centers Modal -->
+<div *ngIf="isManageModalVisible" class="glass-modal">
+  <div class="glass-content">
+    <div class="d-flex justify-content-between align-items-center">
+      <h3>Manage Centers</h3>
+      <button class="btn-close" (click)="closeManageCentersModal()"></button>
+    </div>
+
+    <!-- Scrollable List -->
+    <div class="center-list">
+      <div *ngIf="serviceCenters.length === 0 && !isLoading" class="text-center">No service centers found.</div>
+      <ul class="list-group">
+        <li *ngFor="let center of serviceCenters" (click)="editCenter(center)" class="list-group-item d-flex justify-content-between align-items-center">
+          <span>{{ center.centerName }} ({{ center.city }})</span>
+          <div>
+            <i class="bi bi-pencil-square edit-icon" (click)="editCenter(center)"></i>
+            <i class="bi bi-trash delete-icon" (click)="deleteCenter(center.id)"></i>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -2,10 +2,10 @@
     max-width: 500px;
     margin: auto;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
+    /* background: rgba(255, 255, 255, 0.1); */
     border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    /* backdrop-filter: blur(10px); */
     text-align: left;
     color: white;
     font-size: 15px;
@@ -42,12 +42,12 @@
   }
   
   .btn-primary {
-    background: rgba(0, 123, 255, 0.8);
+    background: rgba(28, 28, 29, 0.8);
     border: none;
   }
   
   .btn-primary:disabled {
-    background: rgba(0, 123, 255, 0.5);
+    background: rgba(105, 107, 109, 0.5);
     cursor: not-allowed;
   }
   
@@ -57,3 +57,95 @@
     margin-top: 5px;
   }
   
+
+  .manage-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .manage-icon:hover {
+    color: #121213;
+  }
+  
+  /* Glassmorphic Modal */
+.glass-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  padding: 20px;
+  width: 45%;
+  max-height: 60vh;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Scrollable List with Glassmorphic Scrollbar */
+.center-list {
+  max-height: 40vh;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Glassmorphic Scrollbar */
+.center-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.center-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.center-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.center-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Icons */
+.edit-icon, .delete-icon {
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.delete-icon {
+  color: red;
+}
+
+.edit-icon:hover {
+  color: #007bff;
+}
+
+.delete-icon:hover {
+  color: darkred;
+}
+
+/* Glassmorphic List Items */
+.list-group-item {
+  background: rgba(255, 255, 255, 0.08) !important; /* Translucent Background */
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 12px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s ease;
+  color: white;
+}
+
+/* Hover Effect for List Items */
+.list-group-item:hover {
+  background: rgba(255, 255, 255, 0.25) !important; /* Slightly Brighter on Hover */
+  cursor: pointer;
+}
+

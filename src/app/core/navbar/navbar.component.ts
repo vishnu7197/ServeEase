@@ -94,10 +94,14 @@ export class NavbarComponent implements OnInit {
   }
   
   login(role: string) {
+    
     this.showLoginPopup = false;
     this.authService.setUserRole(role);
     this.auth.loginWithRedirect();
     this.getNotifications();
+    this.ngOnInit();
+
+    
   }
 
   logout() {

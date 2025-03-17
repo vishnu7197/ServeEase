@@ -42,7 +42,7 @@ export class ServiceBookingListComponent implements OnInit {
       this.callUpdateStatusAPI(booking);
     }
     
-   
+    
   }
 
   callUpdateStatusAPI(booking: any) {

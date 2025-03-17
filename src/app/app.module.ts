@@ -26,6 +26,7 @@ import { RegisterServiceCenterComponent } from './register-service-center/regist
 import { ServiceStatusComponent } from './service-status/service-status.component';
 import { SignupServiceCenterComponent } from './signup-service-center/signup-service-center.component';
 import { ServiceBookingListComponent } from './service-booking-list/service-booking-list.component';
+import { ViewCentersComponent } from './view-centers/view-centers.component';
 
 
 
@@ -49,7 +50,8 @@ import { ServiceBookingListComponent } from './service-booking-list/service-book
     RegisterServiceCenterComponent,
     ServiceStatusComponent,
     SignupServiceCenterComponent,
-    ServiceBookingListComponent
+    ServiceBookingListComponent,
+    ViewCentersComponent
   ],
   imports: [
     BrowserModule,

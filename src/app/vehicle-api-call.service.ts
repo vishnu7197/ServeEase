@@ -13,7 +13,15 @@ export class VehicleApiCallService {
 
   
 
-  
+  deleteServiceCenter(id:any){
+    if(this.integrationFlag){
+      return this._http.delete(this.url+'service_centers/'+id,{ observe: 'response' });
+    }
+    else
+    {
+      return this._http.get('assets/test json/register.json');
+    }
+  }
 
   postNotifications(payload:any){
     if(this.integrationFlag){
@@ -86,6 +94,17 @@ export class VehicleApiCallService {
   registerServiceCenter(payload:any){
     if(this.integrationFlag){
       return this._http.post(this.url+'service_centers',payload, { observe: 'response' });
+    }
+    else
+    {
+      return this._http.get('assets/test json/register.json');
+    }
+
+  }
+
+  putServiceCenter(id: string,payload:any){
+    if(this.integrationFlag){
+      return this._http.put(this.url+'service_centers/'+id,payload, { observe: 'response' });
     }
     else
     {

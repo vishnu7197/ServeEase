@@ -13,14 +13,7 @@
     <div class="service-list mt-5"  *ngIf="services.length > 0">
         <div *ngFor="let service of services" class="service-card glassmorphic">
             <div class="service-header">
-                <h3>Service ID: {{ service.serviceId }}</h3>
-                <span class="status-badge" [ngClass]="getStatusClass(service.status)">
-                    {{ service.status | titlecase }}
-                    <i *ngIf="service.status === 'completed'" 
-                       class="bi bi-download download-icon" 
-                       (click)="downloadPDF(service)">
-                    </i>
-                </span>
+                <h3>Service ID: {{ service.serviceId }}</h3>               
             </div>
 
             <div class="service-details">
