@@ -79,6 +79,7 @@ export class NavbarComponent implements OnInit {
     if (this.showNotifications) {
       this.unreadCount = 0; // Reset unread count when clicked
     }
+    this.getNotifications();
   }
   
   getSortedNotifications() {
@@ -106,6 +107,6 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     localStorage.clear();
-    this.auth.logout({ logoutParams:{returnTo: window.location.origin} });
+    this.auth.logout({ logoutParams:{returnTo: window.location.origin+'/ServeEase'} });
   }
 }

@@ -93,10 +93,11 @@ export class BookServiceComponent implements OnInit {
   }
 
   getServiceCenters(){
+    const regexMail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     this._httpService.getServiceCenters().subscribe(
       (result:any)=>{
         this.isLoading = false;
-        this.serviceCentreList=result;
+        this.serviceCentreList=result.filter((x:any)=>regexMail.test(x.userMail));
         console.log('Service center',this.serviceCentreList);
       },(err)=>{
           this.isLoading=false;
