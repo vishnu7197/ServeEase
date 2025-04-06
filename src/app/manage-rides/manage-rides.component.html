@@ -74,8 +74,11 @@
           <div class="mb-3">
             <label for="registrationNo" class="form-label">Registration No</label>
             <input type="text" id="registrationNo" class="form-control" formControlName="registrationNo">
-            <div class="text-danger" *ngIf="vehicleForm.get('registrationNo')?.invalid && vehicleForm.get('registrationNo')?.touched">
+            <div class="text-danger" *ngIf="vehicleForm.get('registrationNo')?.invalid && vehicleForm.get('registrationNo')?.touched && vehicleForm.get('registrationNo')?.hasError('required')">
               Registration number is required.
+            </div>
+            <div class="text-danger" *ngIf="vehicleForm.get('registrationNo')?.invalid && vehicleForm.get('registrationNo')?.touched && vehicleForm.get('registrationNo')?.hasError('pattern')">
+              Not Valid format (eg:- AB12A1234)
             </div>
           </div>
 
@@ -101,7 +104,7 @@
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal" (click)="handleModalClose()">Close</button>
         <button type="button" class="btn btn-dark" (click)="onSubmit()" [disabled]="vehicleForm.invalid">
           {{btnText}} Vehicle
         </button>

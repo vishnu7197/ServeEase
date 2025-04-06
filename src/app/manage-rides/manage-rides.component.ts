@@ -45,9 +45,9 @@ export class ManageRidesComponent implements OnInit{
       type: ['car', Validators.required], // Default selection
       company: ['', Validators.required],
       model: ['', Validators.required],
-      registrationNo: ['', Validators.required],
+      registrationNo: ['', [Validators.required,Validators.pattern(/^[A-Z]{2}\d{2}[A-Z]{1,2}\d{4}$/)]],
       ownerName: ['', Validators.required],
-      manufacturedYear: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.min(1900), Validators.max(this.currentYear)]]
+      manufacturedYear: ['', [Validators.required, Validators.pattern(/^[0-9]*$/), Validators.min(1900), Validators.max(this.currentYear)]]
     });
   }
 

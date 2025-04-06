@@ -45,7 +45,8 @@ export class BookServiceComponent implements OnInit {
       customerName: ['', Validators.required],
       pickupPoint: ['', [Validators.required, Validators.pattern('^[0-9]{6}$')]],
       serviceCenter: ['',Validators.required],
-      contactNo: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]]
+      contactNo: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      address: ['']
     });
   }
 
