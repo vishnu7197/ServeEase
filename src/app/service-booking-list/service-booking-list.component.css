@@ -125,6 +125,31 @@ input::placeholder {
   font-style: italic;
 }
 
+.booking-list {
+  max-height: 700px; /* Adjust height as needed */
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Glassmorphic Scrollbar */
+.booking-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.booking-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.booking-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
+
+.booking-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
 
 
   

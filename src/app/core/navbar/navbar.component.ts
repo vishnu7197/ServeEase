@@ -107,6 +107,6 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     localStorage.clear();
-    this.auth.logout({ logoutParams:{returnTo: window.location.origin+'/ServeEase'} });
+    this.auth.logout({ logoutParams:{returnTo: window.location.origin} });
   }
 }

@@ -1,11 +1,7 @@
-<app-loading-modal [isVisible]="isLoading"></app-loading-modal>
-<app-message-display-modal [isVisible]="isModalVisible" [type]="modalType" [message]="modalMessage"
-  (onClose)="handleModalClose()"></app-message-display-modal>
-
 <div class="glass-container">
   <h2>Incoming Service Bookings</h2>
 
-  <div *ngIf="serviceBookings.length > 0; else noBookings">
+  <div *ngIf="serviceBookings.length > 0; else noBookings" class="booking-list">
     <div class="booking-card" *ngFor="let booking of serviceBookings">
       <div class="booking-header">
         <h3>Service ID: {{ booking.serviceId }}</h3>
@@ -29,16 +25,4 @@
   <ng-template #noBookings>
     <p class="no-bookings">No incoming service bookings.</p>
   </ng-template>
-</div>
-
-<!-- Cost Estimation Popup -->
-<div class="glass-popup" *ngIf="showCostPopup">
-  <div class="popup-content">
-    <h2>Enter Cost Estimation</h2>
-    <input type="number" [(ngModel)]="estimatedCost" placeholder="Enter cost in ₹" />         
-    <div class="popup-buttons">
-      <button class="btn-glass" (click)="submitCost()">Submit</button>
-      <button class="btn-glass cancel" (click)="  cancelClick()  ">Cancel</button>
-    </div>
-  </div>
 </div>
